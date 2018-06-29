@@ -60,20 +60,23 @@ scipy.misc.imsave(pasta+'/'+nome_img_saida, im_sob)
 #Verificando a imagem através do plot
 plt.subplot(2,2,1)
 plt.imshow(img_1, cmap='gray', interpolation='none')
-plt.title('Imagem Original')
+plt.title('Imagem 1 - Original')
+plt.axis('off')
 
 plt.subplot(2,2,2)
 plt.imshow(im_sob, cmap='gray', interpolation='none')
-plt.title('Gradiente de Sobel - Exato (hipotenusa)')
+plt.title('Imagem 2 - Gradiente de Sobel - Exato')
+plt.axis('off')
+
 # - linha 2
 plt.subplot(2,2,3)
 plt.imshow(img_1[240:290,240:290], cmap='gray', interpolation='none')
-plt.title('Sobel - Original')
+plt.title('Imagem 3 - Gradiente de Sobel - Original')
+plt.axis('off')
 
 plt.subplot(2,2,4)
 plt.imshow(im_sob[240:290,240:290], cmap='gray', interpolation='none')
-plt.title('Sobel')
-
+plt.title('Imagem 4 - Gradiente de Sobel - Final')
 plt.axis('off')
 
 plt.show()

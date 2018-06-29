@@ -37,7 +37,7 @@ img_1 = util.img_as_float(img_1)
 
 #processa a imagem
 masc_random = np.ones([mask_size,mask_size], dtype=float)
-masc_random = masc_random / (mask_size^2)
+masc_random = masc_random / float(mask_size^2)
 
 filtro_media = filters.convolve(img_1, masc_random, mode='constant', cval=0)
 

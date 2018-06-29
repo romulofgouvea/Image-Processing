@@ -50,7 +50,7 @@ plt.imshow(img_1, cmap="gray")
 plt.axis('off')
 
 plt.subplot(1,2,2)
-plt.title("Histograma")
+plt.title("Imagem 2 - Histograma equalizado")
 plt.hist(img_eq.flatten(),  256, range=(0, 1.), normed=True)
 plt.axis('off')
 

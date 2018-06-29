@@ -58,7 +58,7 @@ plt.imshow(img_1, cmap="gray")
 plt.axis('off')
 
 plt.subplot(1,2,2)
-plt.title("Imagem 2 - Laplaciano")
+plt.title("Imagem 2 - Laplaciano aplicado")
 plt.imshow(im_lap_4, cmap="gray")
 plt.axis('off')
 

@@ -21,13 +21,13 @@ img_hist = exposure.histogram(img_1)
 #Verificando a imagem através do plot
 plt.figure()
 plt.subplot(1,2,1)
-plt.title("Imagem 1")
+plt.title("Imagem 1 - Original")
 plt.imshow(img_1, cmap="gray")
 plt.axis('off')
 
 plt.subplot(1,2,2)
 plt.hist(img_hist, bins=256, range=(0,255))
-plt.title('Histograma nao normalizado.')
+plt.title('Imagem 2 - Histograma nao normalizado.')
 plt.axis('off')
 
 plt.show()

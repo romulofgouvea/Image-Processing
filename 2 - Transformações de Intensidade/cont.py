@@ -49,12 +49,12 @@ plt.imshow(img_1, cmap="gray")
 plt.axis('off')
 
 plt.subplot(1,3,2)
-plt.title("Imagem contraste 1")
+plt.title("Imagem 2 - Contraste 1")
 plt.imshow(img_cont1, cmap="gray")
 plt.axis('off')
 
 plt.subplot(1,3,3)
-plt.title("Imagem contraste 2")
+plt.title("Imagem 3 - Contraste 2")
 plt.imshow(img_cont2, cmap="gray")
 plt.axis('off')
 

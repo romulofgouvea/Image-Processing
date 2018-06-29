@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-#python neg.py noisy_fingerprint.tif noisy_fingerprint_NEG.tif
-#Digite: python neg.py <img_entrada> <img_saida>
+#python otsu.py noisy_fingerprint.tif noisy_fingerprint_OTSU.tif
+#Digite: python otsu.py <img_entrada> <img_saida>
 
 import sys
 import os.path
 import numpy as np
 import matplotlib.pyplot as plt
-from skimage import data,color,util
+from skimage import data,color,util,filters
 import scipy.misc
 
 np.seterr(divide='ignore', invalid='ignore')
@@ -31,31 +31,27 @@ if img_1.ndim > 2:
     img_1 = color.rgb2gray(img_1)
 
 # Converte imagem para float.
-img_1 = util.img_as_float(img_1)
+# img_1 = util.img_as_float(img_1)
 
 #processa a imagem
-img_neg = 1.0 - img_1
+t_otsu = filters.threshold_otsu(img_1)
+im_otsu = img_1 < t_otsu
 
 #verifica o diretório
 verificaDiretorio(pasta)
 
 #salva na pasta com o nome especificado no comando
-scipy.misc.imsave(pasta+'/'+nome_img_saida, img_neg)
+scipy.misc.imsave(pasta+'/'+nome_img_saida, im_otsu)
 
 #Verificando a imagem através do plot
-plt.figure()
 plt.subplot(1,2,1)
-plt.title("Imagem 1 - Original")
-plt.imshow(img_1, cmap="gray")
+plt.imshow(img_1, cmap='gray', interpolation='none')
+plt.title('Imagem 1 - Original')
 plt.axis('off')
 
 plt.subplot(1,2,2)
-plt.title("Imagem 2 - Negativa")
-plt.imshow(img_neg, cmap="gray")
+plt.imshow(im_otsu, cmap='gray', interpolation='none')
+plt.title('Imagem 2 - Limiarizacao Otsu')
 plt.axis('off')
 
 plt.show()
-
-
-
-    

@@ -58,7 +58,7 @@ plt.imshow(img_2, cmap="gray")
 plt.axis('off')
 
 plt.subplot(2,3,2)
-plt.title("And")
+plt.title("Imagem 3 - Usando operador And")
 plt.imshow(img_and, cmap="gray")
 plt.axis('off')
 

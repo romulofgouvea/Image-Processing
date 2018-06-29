@@ -56,7 +56,7 @@ plt.imshow(img_2, cmap="gray")
 plt.axis('off')
 
 plt.subplot(1,3,3)
-plt.title("Soma")
+plt.title("Imagem 3 - Soma")
 plt.imshow(img_som, cmap="gray")
 plt.axis('off')
 
