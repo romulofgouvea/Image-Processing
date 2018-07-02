@@ -20,6 +20,11 @@ def verificaDiretorio(diretorio):
         print ('Pasta criada com sucesso!')
     print("Diretório ok!")
 
+def imgBinary(img):
+    img = img > 0.5
+    return img
+
+
 pasta = "/".join( os.path.abspath(__file__).replace('\\','/').split('/')[:-1] ) +'/img_saida/'+ os.path.basename(__file__).split('.',1)[0]
 
 #carrega a img1.tiff
@@ -35,6 +40,11 @@ if img_2.ndim > 2:
     img_2 = color.rgb2gray(img_2)
 
 #processa a imagem
+img_1 = util.img_as_float(img_1)
+img_2 = util.img_as_float(img_2)
+
+img_1 = imgBinary(img_1)
+img_2 = imgBinary(img_2)
 img_som = img_1 + img_2
 
 #verifica o diretório

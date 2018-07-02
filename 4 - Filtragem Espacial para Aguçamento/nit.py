@@ -35,59 +35,37 @@ if img_1.ndim > 2:
 img_1 = util.img_as_float(img_1)
 
 #processa a imagem
-img_blur_orig = filters.gaussian_filter(img_1, sigma=3)
-img_blurred = filters.gaussian_filter(img_blur_orig, 3)
-
-# Mascara
-masc_nitidez = img_blur_orig - img_blurred
-
-# Mascara de nitidez
 k = 1
-img_nitidez = img_blur_orig + k * masc_nitidez
-
-# Teste valores de k (de 0.1 em 0.1) ate comecar a aparece valore negativos.
-for k in np.arange(1.1,5.,0.1): # De 1.1 até 5.0, de 0.1  em 0.1!
-    img_boost = img_blur_orig + k * masc_nitidez
-    if img_boost.min() < 0:
-        img_boost = img_blur_orig + k-0.1 * masc_nitidez
-        break
+img_blurred = filters.gaussian_filter(img_1, sigma=5)
+masc_nitidez = img_1 - img_blurred
+img_nitidez = img_1 + k * masc_nitidez
 
 #verifica o diretório
 verificaDiretorio(pasta)
 
 #salva na pasta com o nome especificado no comando
-scipy.misc.imsave(pasta+'/'+nome_img_saida, img_boost)
+scipy.misc.imsave(pasta+'/'+nome_img_saida, img_nitidez)
 
 #Verificando a imagem através do plot
 plt.figure()
-plt.subplot(2,3,1)
+plt.subplot(2,2,1)
 plt.title("Imagem 1 - Original")
 plt.imshow(img_1, cmap="gray")
 plt.axis('off')
 
-plt.subplot(2,3,2)
-plt.title("Imagem 2 - Original borrada")
-plt.imshow(img_blur_orig, cmap="gray")
-plt.axis('off')
-
-plt.subplot(2,3,3)
+plt.subplot(2,2,2)
 plt.title("Imagem 3 - Borrada")
 plt.imshow(img_blurred, cmap="gray")
 plt.axis('off')
 
-plt.subplot(2,3,4)
+plt.subplot(2,2,3)
 plt.title("Imagem 4 - Mascara de nitidez")
 plt.imshow(masc_nitidez, cmap="gray")
 plt.axis('off')
 
-plt.subplot(2,3,5)
+plt.subplot(2,2,4)
 plt.title("Imagem 5 - Aplicacao da mascara de nitidez")
 plt.imshow(img_nitidez, cmap="gray")
-plt.axis('off')
-
-plt.subplot(2,3,6)
-plt.title("Imagem 6 - Filtro high-boost")
-plt.imshow(img_boost, cmap="gray")
 plt.axis('off')
 
 plt.show()

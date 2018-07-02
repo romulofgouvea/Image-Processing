@@ -20,6 +20,10 @@ def verificaDiretorio(diretorio):
         print ('Pasta criada com sucesso!')
     print("Diretório ok!")
 
+def imgBinary(img):
+    img = img > 0.5
+    return img
+
 #carrega a img1.tiff
 img_1 = data.imread(sys.argv[1])
 img_2 = data.imread(sys.argv[2])
@@ -35,7 +39,13 @@ if img_1.ndim > 2:
 if img_2.ndim > 2:
     img_2 = color.rgb2gray(img_2)
 
-#processa as imagens
+
+img_1 = util.img_as_float(img_1)
+img_2 = util.img_as_float(img_2)
+
+img_1 = imgBinary(img_1)
+img_2 = imgBinary(img_2)
+
 img_and = np.logical_and(img_1,img_2)
 img_or = np.logical_or(img_1,img_2)
 
@@ -47,23 +57,22 @@ scipy.misc.imsave(pasta+'/'+nome_img_saida, img_and)
 
 #Verificando a imagem através do plot
 plt.figure()
-plt.subplot(2,3,1)
+plt.subplot(2,2,1)
 plt.title("Imagem 1 - Original")
 plt.imshow(img_and, cmap="gray")
 plt.axis('off')
 
-plt.subplot(2,3,4)
+plt.subplot(2,2,3)
 plt.title("Imagem 2 - Original")
 plt.imshow(img_2, cmap="gray")
 plt.axis('off')
 
-plt.subplot(2,3,2)
+plt.subplot(2,2,2)
 plt.title("Imagem 3 - Usando operador And")
 plt.imshow(img_and, cmap="gray")
 plt.axis('off')
 
-
-plt.subplot(2,3,3)
+plt.subplot(2,2,4)
 plt.title("Or")
 plt.imshow(img_or, cmap="gray")
 plt.axis('off')
