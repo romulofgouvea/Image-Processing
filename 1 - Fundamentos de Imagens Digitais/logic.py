@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#python aritm.py noisy_fingerprint.tif noisy_fingerprint_ARITM.tif
+#python aritm.py noisy_fingerprint.tif noisy_fingerprint_LOGIC.tif
 #Digite: python logic.py <img_entrada_1> <img_entrada_2> <img_saida>
 
 import sys
@@ -24,9 +24,12 @@ def imgBinary(img):
     img = img > 0.5
     return img
 
-#carrega a img1.tiff
-img_1 = data.imread(sys.argv[1])
-img_2 = data.imread(sys.argv[2])
+def carregaImg(arg):
+    return data.imread("../imagens/"+arg)
+
+#carrega imagem
+img_1 = carregaImg(sys.argv[1])
+img_2 = carregaImg(sys.argv[2])
 nome_img_saida = sys.argv[3]
 
 #pega o caminho do computador até a pasta

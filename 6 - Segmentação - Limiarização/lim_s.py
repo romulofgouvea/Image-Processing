@@ -24,7 +24,11 @@ def verificaDiretorio(diretorio):
 pasta = "/".join( os.path.abspath(__file__).replace('\\','/').split('/')[:-1] ) +'/img_saida/'+ os.path.basename(__file__).split('.',1)[0]
 
 #carrega a img1.tiff
-img_1 = data.imread(sys.argv[1])
+def carregaImg(arg):
+    return data.imread("../imagens/"+arg)
+
+#carrega imagem
+img_1 = carregaImg(sys.argv[1])
 nome_img_saida = sys.argv[2]
 mask_size = int(sys.argv[3])
 

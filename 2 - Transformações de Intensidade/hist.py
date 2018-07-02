@@ -6,7 +6,11 @@ import sys
 import matplotlib.pyplot as plt
 from skimage import data,color,util,exposure
  
-img_1 = data.imread(sys.argv[1])
+def carregaImg(arg):
+    return data.imread("../imagens/"+arg)
+
+#carrega imagem
+img_1 = carregaImg(sys.argv[1])
 
 # Se necessário, converte para imagem em níveis de cinza.
 if img_1.ndim > 2:

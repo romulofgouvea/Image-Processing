@@ -20,8 +20,11 @@ def verificaDiretorio(diretorio):
         print ('Pasta criada com sucesso!')
     print("Diretório ok!")
 
-#carrega a img1.tiff
-img_1 = data.imread(sys.argv[1])
+def carregaImg(arg):
+    return data.imread("../imagens/"+arg)
+
+#carrega imagem
+img_1 = carregaImg(sys.argv[1])
 nome_img_saida = sys.argv[2]
 
 #pega o caminho do computador até a pasta
